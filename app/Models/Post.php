@@ -16,8 +16,6 @@ class Post extends Model
         'user_id',
     ];
 
-    public $timestamps = true;
-
     public static function getAllOrderByUpdated_at()
     {
         return self::orderBy('updated_at', 'desc')->get();
