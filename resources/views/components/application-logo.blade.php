@@ -1,1 +1,1 @@
-<img src="{{ asset('images/REALize.svg') }}" alt="Example SVG" width="200">
+<img src="{{ asset('images/REALize.svg') }}" alt="REALize SVG" width="200">
