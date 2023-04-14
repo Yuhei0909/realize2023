@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-center text-gray-800 leading-tight">
-      {{ __('相談編集') }}
+      {{ __('編集') }}
     </h2>
   </x-slot>
   
@@ -37,7 +37,7 @@
                     <div class="flex items-center justify-end mt-4">
                       <a href="{{ url()->previous() }}">
                         <x-primary-button class="ml-3">
-                          {{ __('相談一覧') }}
+                          {{ __('ホーム') }}
                         </x-primary-button>
                       </a>
                       <x-primary-button class="ml-3">

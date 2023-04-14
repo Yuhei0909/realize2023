@@ -82,7 +82,7 @@ class PostController extends Controller
             ->posts()
             ->orderBy('created_at','desc')
             ->get();
-        return response()->view('posts.index', compact('posts'));
+        return response()->view('posts.mydata', compact('posts'));
     }
     
     public function timeline()

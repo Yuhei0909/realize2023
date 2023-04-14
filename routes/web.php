@@ -16,7 +16,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/search/input', [SearchController::class, 'create'])->name('search.input');
     Route::get('/posts/search/result', [SearchController::class, 'index'])->name('search.result');
     Route::get('/posts/mypage', [PostController::class, 'mydata'])->name('posts.mypage');
-    Route::get('/posts/timeline', [PostController::class, 'timeline'])->name('posts.timeline');
     Route::resource('posts', PostController::class);
     Route::get('/user', [FollowController::class, 'index'])->name('user.index');
     Route::get('user/{user}', [FollowController::class, 'show'])->name('user.show');
@@ -36,11 +35,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('posts.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/sample', function () {
-    return view('sample');
-});
 
 require __DIR__.'/auth.php';
