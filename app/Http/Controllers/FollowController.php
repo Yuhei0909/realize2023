@@ -11,7 +11,13 @@ class FollowController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('user.index', compact('users'));
+    
+        $isMutualFollow = [];
+        foreach ($users as $user) {
+            $isMutualFollow[$user->id] = $this->isMutualFollow($user->id);
+        }
+    
+        return view('user.index', compact('users', 'isMutualFollow'));
     }
 
     public function show($id)
@@ -36,5 +42,13 @@ class FollowController extends Controller
         $request->user()->followings()->detach($userToUnfollow->id);
 
         return redirect()->back()->with('success', 'You have unfollowed ' . $userToUnfollow->name);
+    }
+
+    public function isMutualFollow($id)
+    {
+        $user = User::findOrFail($id);
+        $mutual_follows = Auth::user()->mutual_follows();
+    
+        return $mutual_follows->contains($user);
     }
 }

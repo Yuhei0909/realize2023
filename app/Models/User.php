@@ -53,4 +53,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id');
     }
+
+    public function mutual_follows()
+    {
+        $followings = $this->followings;
+        $followers = $this->followers;
+        $mutual_follows = $followings->intersect($followers);
+    
+        return $mutual_follows;
+    }
 }

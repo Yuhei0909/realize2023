@@ -18,6 +18,7 @@
                 <th class="border px-4 py-2">{{ __('ニックネーム') }}</th>
                 <th class="border px-4 py-2">{{ __('登録日') }}</th>
                 <th class="border px-4 py-2">{{ __('詳細') }}</th>
+                <th class="border px-4 py-2">{{ __('会話') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -33,6 +34,17 @@
                       </x-primary-button>
                     </a>
                   </div>
+                </td>
+                <td class="border px-4 py-2">
+                  @if(app('App\Http\Controllers\FollowController')->isMutualFollow($user->id))
+                    <div class="items-center">
+                      <a href="{{ url('conversations/' . $user->id) }}">
+                        <x-primary-button class="ml-3">
+                          {{ __('会話') }}
+                        </x-primary-button>
+                      </a>
+                    </div>
+                  @endif
                 </td>
               </tr>
               @endforeach
